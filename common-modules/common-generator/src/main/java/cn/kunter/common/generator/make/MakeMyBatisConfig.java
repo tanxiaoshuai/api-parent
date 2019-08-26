@@ -38,7 +38,7 @@ public class MakeMyBatisConfig {
         builder1.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         OutputUtilities.newLine(builder1);
         builder1.append(
-                "<!DOCTYPE configuration PUBLIC \"-//mybatis.org//DTD Config 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-config.dtd\">");
+                "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">");
         OutputUtilities.newLine(builder1);
         builder1.append("<configuration>");
         OutputUtilities.newLine(builder1);
@@ -61,12 +61,12 @@ public class MakeMyBatisConfig {
         builder2.append("</typeAliases>");
         OutputUtilities.newLine(builder2);
         OutputUtilities.javaIndent(builder2, 1);
-        builder2.append("<mappers>");
+        builder2.append("<mapper>");
 
         StringBuilder builder3 = new StringBuilder();
         OutputUtilities.newLine(builder3);
         OutputUtilities.javaIndent(builder3, 1);
-        builder3.append("</mappers>");
+        builder3.append("</mapper>");
         OutputUtilities.newLine(builder3);
         builder3.append("</configuration>");
 

@@ -25,7 +25,7 @@ public class MakeIServiceImpl {
         builder.append(JavaBeansUtil.getImports(PropertyHolder.getConfigProperty("packageBaseIServiceImpl"), false, false));
         builder.append(JavaBeansUtil.getImports("org.springframework.stereotype.Service", false, false));
         builder.append(JavaBeansUtil.getImports("org.springframework.beans.factory.annotation.Autowired", false, false));
-        builder.append(JavaBeansUtil.getImports(PropertyHolder.getConfigProperty("package")+".mappers."+table.getJavaName()+"Mapper", false, false));
+        builder.append(JavaBeansUtil.getImports(PropertyHolder.getConfigProperty("package")+".mapper."+table.getJavaName()+"Mapper", false, false));
         OutputUtilities.newLine(builder);
         builder.append("/**");
         OutputUtilities.newLine(builder);

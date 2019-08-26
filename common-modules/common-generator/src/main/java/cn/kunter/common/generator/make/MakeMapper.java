@@ -19,7 +19,7 @@ public class MakeMapper {
 
     public static void makerMapper(Table table) throws Exception {
         StringBuilder builder = new StringBuilder();
-        String entityPackages = PropertyHolder.getConfigProperty("package")+".mappers";
+        String entityPackages = PropertyHolder.getConfigProperty("package")+".mapper";
         builder.append(JavaBeansUtil.getPackages(entityPackages));
         builder.append(JavaBeansUtil.getImports(PropertyHolder.getConfigProperty("package")+".model."+ table.getJavaName(), false, true));
         builder.append(JavaBeansUtil.getImports("org.apache.ibatis.annotations.Mapper", false, false));

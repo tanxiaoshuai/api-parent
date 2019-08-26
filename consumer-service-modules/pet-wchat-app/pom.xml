@@ -14,10 +14,6 @@
     <dependencies>
         <dependency>
             <groupId>cn.nmmpa</groupId>
-            <artifactId>dynamic-service-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>cn.nmmpa</groupId>
             <artifactId>common-aop</artifactId>
         </dependency>
     </dependencies>

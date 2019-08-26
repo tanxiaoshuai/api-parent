@@ -59,7 +59,7 @@
         <common-aop.version>1.0.0</common-aop.version>
         <common-token.version>1.0.0</common-token.version>
         <!--api-->
-        <dynamic-service-api.version>1.0.0</dynamic-service-api.version>
+        <user-center-api.version>1.0.0</user-center-api.version>
     </properties>
 
     <dependencyManagement>
@@ -216,8 +216,8 @@
             <!--api-->
             <dependency>
                 <groupId>cn.nmmpa</groupId>
-                <artifactId>dynamic-service-api</artifactId>
-                <version>${dynamic-service-api.version}</version>
+                <artifactId>user-center-api</artifactId>
+                <version>${user-center-api.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

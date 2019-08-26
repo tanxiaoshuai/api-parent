@@ -56,12 +56,12 @@ public class MakeXml {
         builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         OutputUtilities.newLine(builder);
         builder.append(
-                "<!DOCTYPE mappers PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mappers.dtd\">");
+                "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">");
         OutputUtilities.newLine(builder);
-        builder.append("<mappers namespace=\"" + namespace + "\">");
+        builder.append("<mapper namespace=\"" + namespace + "\">");
 
         OutputUtilities.newLine(builder);
-        builder.append("</mappers>");
+        builder.append("</mapper>");
 
         FileUtil.writeFile(PropertyHolder.getConfigProperty("target") + xmlPackages.replaceAll("\\.", "/") + "/"
                 + table.getJavaName() + "Mapper.xml", builder.toString());

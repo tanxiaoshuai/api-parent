@@ -16,6 +16,11 @@
             <artifactId>common-token</artifactId>
             <version>1.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>cn.nmmpa</groupId>
+            <artifactId>user-center-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 

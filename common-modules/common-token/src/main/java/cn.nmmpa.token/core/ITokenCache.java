@@ -1,5 +1,7 @@
 package cn.nmmpa.token.core;
 
+import java.util.Map;
+
 /**
  * @Author: tan shuai
  * @Date: 2019/8/24 14:02
@@ -26,6 +28,18 @@ public interface ITokenCache {
      * @param key
      */
    void refreshTime(String key);
+
+    /**
+     * 获取刷新时间
+     */
+   long getRefreshTime();
+
+    /**
+     * 创建redis key
+     * @param map
+     * @return
+     */
+   String createRedisKey(Map map);
 
     /**
      * 设置时间

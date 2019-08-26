@@ -1,7 +1,6 @@
 package cn.nmmpa.token.core;
 
 import cn.nmmpa.common.util.RsaUtil;
-import cn.nmmpa.token.vo.TokenBody;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 

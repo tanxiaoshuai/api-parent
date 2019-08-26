@@ -15,6 +15,8 @@ public enum ExceptionEnum {
     SUCCESS(200 , "操作成功"),
 
     ERROR(500 , "操作失败"),
+
+    ACCOUNT_OR_PWD_ERROR(403, "账户或密码错误")
     ;
     int code;
     String message;
