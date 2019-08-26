@@ -50,10 +50,10 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
             throw new ProviderServiceException(ExceptionEnum.ACCOUNT_OR_PWD_ERROR);
         }
         TokenBody tokenBody = new TokenBody(site.getId().toString() , "SITE");
-        String token = authoriz.createToken(tokenBody);
         SiteLoginRespVo siteLoginRespVo = new SiteLoginRespVo();
-        siteLoginRespVo.setToken(token);
         BeanUtils.copyProperties(site , siteLoginRespVo);
+        String token = authoriz.createToken(tokenBody);
+        siteLoginRespVo.setToken(token);
         return siteLoginRespVo;
     }
 }
