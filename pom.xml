@@ -170,6 +170,13 @@
                 <version>${lombok.version}</version>
             </dependency>
 
+            <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${servlet-api.version}</version>
+            </dependency>
+
             <!--common-->
             <dependency>
                 <groupId>cn.nmmpa</groupId>

@@ -1,5 +1,7 @@
 package cn.nmmpa.token.core;
 
+import cn.nmmpa.token.vo.BaseBody;
+
 import java.util.Map;
 
 /**
@@ -7,7 +9,7 @@ import java.util.Map;
  * @Date: 2019/8/24 14:02
  * @Version 1.0
  */
-public interface ITokenCache {
+public interface ITokenCache<T extends BaseBody> {
 
     /**
      *
@@ -39,7 +41,7 @@ public interface ITokenCache {
      * @param map
      * @return
      */
-   String createRedisKey(Map map);
+   String createRedisKey(T map);
 
     /**
      * 设置时间

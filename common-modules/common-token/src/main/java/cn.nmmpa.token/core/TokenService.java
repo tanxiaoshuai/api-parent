@@ -1,6 +1,8 @@
 package cn.nmmpa.token.core;
 
 import cn.nmmpa.common.util.RsaUtil;
+import cn.nmmpa.token.vo.BaseBody;
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 
@@ -13,7 +15,7 @@ import java.util.Map;
  * @Version 1.0
  */
 @Slf4j
-public class TokenService implements ITokenService{
+public class TokenService<T extends BaseBody> implements ITokenService<T>{
 
     /**
      * 设置token类型 (默认true为有状态走缓存 false无状态不走缓存)
@@ -26,12 +28,7 @@ public class TokenService implements ITokenService{
 
 
     @Override
-    public String createToken(Map body){
-        if(body == null){
-            body = new HashMap(0);
-        }
-        //设置默认参数
-        body.put("epx" ,System.currentTimeMillis());
+    public String createToken(T body){
         String token = null;
         try {
             token = RsaUtil.encrypt(JSONObject.toJSONString(body) , publicKey);
@@ -54,11 +51,11 @@ public class TokenService implements ITokenService{
     }
 
     @Override
-    public Map getBody(String token) {
-        Map tokenBody = null;
+    public T getBody(String token , Class<T> tClass) {
+        T tokenBody = null;
         try {
             String decrypt = RsaUtil.decrypt(token, privateKey);
-            tokenBody = JSONObject.parseObject(decrypt , Map.class);
+            tokenBody = JSONObject.parseObject(decrypt , tClass);
         }catch (Exception e){
             log.info("body数据获取失败:{}" , e);
         }

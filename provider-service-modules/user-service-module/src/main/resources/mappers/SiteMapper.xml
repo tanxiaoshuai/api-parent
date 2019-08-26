@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.nmmpa.user.mappers.SiteMapper">
+<mapper namespace="cn.nmmpa.user.mapper.SiteMapper">
     <resultMap id="BaseResultMap" type="cn.nmmpa.user.model.Site">
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="site_name" jdbcType="VARCHAR" property="siteName" />
@@ -214,40 +214,40 @@
             t_site
         <where>
             <if test="id != null">
-                 AND id = #{id,jdbcType=BIGINT},
+                 AND id = #{id,jdbcType=BIGINT}
             </if>
             <if test="siteName != null">
-                 AND site_name = #{siteName,jdbcType=VARCHAR},
+                 AND site_name = #{siteName,jdbcType=VARCHAR}
             </if>
             <if test="account != null">
-                 AND account = #{account,jdbcType=VARCHAR},
+                 AND account = #{account,jdbcType=VARCHAR}
             </if>
             <if test="tel != null">
-                 AND tel = #{tel,jdbcType=VARCHAR},
+                 AND tel = #{tel,jdbcType=VARCHAR}
             </if>
             <if test="passWord != null">
-                 AND pass_word = #{passWord,jdbcType=VARCHAR},
+                 AND pass_word = #{passWord,jdbcType=VARCHAR}
             </if>
             <if test="siteCode != null">
-                 AND site_code = #{siteCode,jdbcType=VARCHAR},
+                 AND site_code = #{siteCode,jdbcType=VARCHAR}
             </if>
             <if test="appId != null">
-                 AND app_id = #{appId,jdbcType=VARCHAR},
+                 AND app_id = #{appId,jdbcType=VARCHAR}
             </if>
             <if test="secretKey != null">
-                 AND secret_key = #{secretKey,jdbcType=VARCHAR},
+                 AND secret_key = #{secretKey,jdbcType=VARCHAR}
             </if>
             <if test="salt != null">
-                 AND salt = #{salt,jdbcType=VARCHAR},
+                 AND salt = #{salt,jdbcType=VARCHAR}
             </if>
             <if test="isDelete != null">
-                 AND is_delete = #{isDelete,jdbcType=INTEGER},
+                 AND is_delete = #{isDelete,jdbcType=INTEGER}
             </if>
             <if test="createTime != null">
-                 AND create_time = #{createTime,jdbcType=TIMESTAMP},
+                 AND create_time = #{createTime,jdbcType=TIMESTAMP}
             </if>
             <if test="updateTime != null">
-                 AND update_time = #{updateTime,jdbcType=TIMESTAMP},
+                 AND update_time = #{updateTime,jdbcType=TIMESTAMP}
             </if>
         </where>
     </select>
@@ -259,40 +259,40 @@
             t_site
         <where>
             <if test="id != null">
-                 AND id = #{id,jdbcType=BIGINT},
+                 AND id = #{id,jdbcType=BIGINT}
             </if>
             <if test="siteName != null">
-                 AND site_name = #{siteName,jdbcType=VARCHAR},
+                 AND site_name = #{siteName,jdbcType=VARCHAR}
             </if>
             <if test="account != null">
-                 AND account = #{account,jdbcType=VARCHAR},
+                 AND account = #{account,jdbcType=VARCHAR}
             </if>
             <if test="tel != null">
-                 AND tel = #{tel,jdbcType=VARCHAR},
+                 AND tel = #{tel,jdbcType=VARCHAR}
             </if>
             <if test="passWord != null">
-                 AND pass_word = #{passWord,jdbcType=VARCHAR},
+                 AND pass_word = #{passWord,jdbcType=VARCHAR}
             </if>
             <if test="siteCode != null">
-                 AND site_code = #{siteCode,jdbcType=VARCHAR},
+                 AND site_code = #{siteCode,jdbcType=VARCHAR}
             </if>
             <if test="appId != null">
-                 AND app_id = #{appId,jdbcType=VARCHAR},
+                 AND app_id = #{appId,jdbcType=VARCHAR}
             </if>
             <if test="secretKey != null">
-                 AND secret_key = #{secretKey,jdbcType=VARCHAR},
+                 AND secret_key = #{secretKey,jdbcType=VARCHAR}
             </if>
             <if test="salt != null">
-                 AND salt = #{salt,jdbcType=VARCHAR},
+                 AND salt = #{salt,jdbcType=VARCHAR}
             </if>
             <if test="isDelete != null">
-                 AND is_delete = #{isDelete,jdbcType=INTEGER},
+                 AND is_delete = #{isDelete,jdbcType=INTEGER}
             </if>
             <if test="createTime != null">
-                 AND create_time = #{createTime,jdbcType=TIMESTAMP},
+                 AND create_time = #{createTime,jdbcType=TIMESTAMP}
             </if>
             <if test="updateTime != null">
-                 AND update_time = #{updateTime,jdbcType=TIMESTAMP},
+                 AND update_time = #{updateTime,jdbcType=TIMESTAMP}
             </if>
         </where>
     </select>

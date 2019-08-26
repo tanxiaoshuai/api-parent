@@ -1,21 +1,19 @@
 package cn.nmmpa.token.core;
 
-import cn.nmmpa.token.vo.TokenBody;
-
-import java.util.Map;
+import cn.nmmpa.token.vo.BaseBody;
 
 /**
  * @Author: tan shuai
  * @Date: 2019/8/24 14:37
  * @Version 1.0
  */
-public interface ITokenService {
+public interface ITokenService<T extends BaseBody> {
 
     /**
      * 创建token
      * @param body
      */
-    String createToken(Map body) throws Exception;
+    String createToken(T body) throws Exception;
 
     /**
      * 验证token
@@ -28,7 +26,7 @@ public interface ITokenService {
      * @param token
      * @return
      */
-    Map getBody(String token);
+    T getBody(String token , Class<T> tClass);
 
     /**
      * 设置token类型 (默认true为有状态走缓存 false无状态不走缓存)

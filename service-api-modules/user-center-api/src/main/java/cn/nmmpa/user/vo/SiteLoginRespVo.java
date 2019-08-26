@@ -19,8 +19,6 @@ public class SiteLoginRespVo implements Serializable {
     private String account;
     @ApiModelProperty("手机号")
     private String tel;
-    @ApiModelProperty("密码")
-    private String passWord;
     @ApiModelProperty("站点code")
     private String siteCode;
     @ApiModelProperty("token")

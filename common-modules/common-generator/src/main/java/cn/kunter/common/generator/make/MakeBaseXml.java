@@ -440,7 +440,7 @@ public class MakeBaseXml {
                 else if (column.getColumnName().equals("update_user_id")) {
                     // builder.append(table.getAlias()).append(".");
                     builder.append(column.getColumnName() + " = #{" + column.getJavaName() + ",jdbcType="
-                            + column.getSqlType() + "},");
+                            + column.getSqlType() + "}");
                 }
                 else {
                     builder.append("<if test=\"" + column.getJavaName() + " != null\">");
@@ -449,7 +449,7 @@ public class MakeBaseXml {
                     // builder.append(table.getAlias()).append(".");
                     builder.append(" AND ");
                     builder.append(column.getColumnName() + " = #{" + column.getJavaName() + ",jdbcType="
-                            + column.getSqlType() + "},");
+                            + column.getSqlType() + "}");
                     OutputUtilities.newLine(builder);
                     OutputUtilities.javaIndent(builder, 3);
                     builder.append("</if>");
@@ -508,7 +508,7 @@ public class MakeBaseXml {
                 else if (column.getColumnName().equals("update_user_id")) {
                     // builder.append(table.getAlias()).append(".");
                     builder.append(column.getColumnName() + " = #{" + column.getJavaName() + ",jdbcType="
-                            + column.getSqlType() + "},");
+                            + column.getSqlType() + "}");
                 }
                 else {
                     builder.append("<if test=\"" + column.getJavaName() + " != null\">");
@@ -517,7 +517,7 @@ public class MakeBaseXml {
                     // builder.append(table.getAlias()).append(".");
                     builder.append(" AND ");
                     builder.append(column.getColumnName() + " = #{" + column.getJavaName() + ",jdbcType="
-                            + column.getSqlType() + "},");
+                            + column.getSqlType() + "}");
                     OutputUtilities.newLine(builder);
                     OutputUtilities.javaIndent(builder, 3);
                     builder.append("</if>");

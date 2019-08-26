@@ -1,6 +1,7 @@
 package cn.nmmpa.token.util;
 
 import cn.nmmpa.token.exception.TokenException;
+import cn.nmmpa.token.vo.BaseBody;
 
 import java.util.Map;
 
@@ -18,6 +19,12 @@ public class TokenAssert {
     }
 
     public static void isNotNull(Map p , String msg){
+        if(p == null){
+            throw new TokenException(msg);
+        }
+    }
+
+    public static void isNotNull(BaseBody p , String msg){
         if(p == null){
             throw new TokenException(msg);
         }
