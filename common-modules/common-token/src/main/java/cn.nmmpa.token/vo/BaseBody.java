@@ -2,15 +2,26 @@ package cn.nmmpa.token.vo;
 
 
 /**
+ * @author tan
  * Created by TS on 2019/8/26.
  */
-public class BaseBody {
+public class BaseBody<T> {
 
     private String key;
 
     private String prefix = "TOKEN";
 
     private long epx = System.currentTimeMillis();
+
+    private T body;
+
+    public T getBody() {
+        return body;
+    }
+
+    public void setBody(T body) {
+        this.body = body;
+    }
 
     public String getKey() {
         return key;

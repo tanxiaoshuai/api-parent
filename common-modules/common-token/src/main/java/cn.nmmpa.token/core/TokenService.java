@@ -2,12 +2,8 @@ package cn.nmmpa.token.core;
 
 import cn.nmmpa.common.util.RsaUtil;
 import cn.nmmpa.token.vo.BaseBody;
-import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Author: tan shuai
@@ -15,7 +11,7 @@ import java.util.Map;
  * @Version 1.0
  */
 @Slf4j
-public class TokenService<T extends BaseBody> implements ITokenService<T>{
+public class TokenService<T> implements ITokenService<T>{
 
     /**
      * 设置token类型 (默认true为有状态走缓存 false无状态不走缓存)
@@ -28,7 +24,7 @@ public class TokenService<T extends BaseBody> implements ITokenService<T>{
 
 
     @Override
-    public String createToken(T body){
+    public String createToken(BaseBody<T> body){
         String token = null;
         try {
             token = RsaUtil.encrypt(JSONObject.toJSONString(body) , publicKey);
@@ -51,11 +47,11 @@ public class TokenService<T extends BaseBody> implements ITokenService<T>{
     }
 
     @Override
-    public T getBody(String token , Class<T> tClass) {
-        T tokenBody = null;
+    public BaseBody<T> getBody(String token) {
+        BaseBody<T> tokenBody = null;
         try {
             String decrypt = RsaUtil.decrypt(token, privateKey);
-            tokenBody = JSONObject.parseObject(decrypt , tClass);
+            tokenBody = JSONObject.parseObject(decrypt , BaseBody.class);
         }catch (Exception e){
             log.info("body数据获取失败:{}" , e);
         }

@@ -9,7 +9,7 @@ import java.util.Map;
  * @Date: 2019/8/24 14:02
  * @Version 1.0
  */
-public interface ITokenCache<T extends BaseBody> {
+public interface ITokenCache<T> {
 
     /**
      *
@@ -33,19 +33,21 @@ public interface ITokenCache<T extends BaseBody> {
 
     /**
      * 获取刷新时间
+     * @return
      */
    long getRefreshTime();
 
     /**
      * 创建redis key
-     * @param map
+     * @param body
      * @return
      */
-   String createRedisKey(T map);
+   String createRedisKey(BaseBody<T> body);
 
     /**
      * 设置时间
      * @param time
+     * @return
      */
    ITokenCache setRefreshTime(Long time);
 

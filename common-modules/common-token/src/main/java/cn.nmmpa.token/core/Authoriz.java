@@ -9,7 +9,7 @@ import cn.nmmpa.token.vo.BaseBody;
  * @Date: 2019/8/24 15:30
  * @Version 1.0
  */
-public class Authoriz<T extends BaseBody> {
+public class Authoriz<T> {
 
     private TokenService tokenService;
 
@@ -20,7 +20,7 @@ public class Authoriz<T extends BaseBody> {
      * @param body
      * @return
      */
-    public String createToken(T body){
+    public String createToken(BaseBody<T> body){
         //设置redis key
         String token = tokenService.createToken(body);
         //true走有状态token
@@ -32,7 +32,7 @@ public class Authoriz<T extends BaseBody> {
     }
 
     public void checkToken(String token){
-        BaseBody body = tokenService.getBody(token , BaseBody.class);
+        BaseBody body = tokenService.getBody(token);
         TokenAssert.isNotNull(body , "token不合法");
         if(tokenService.getTokenType()){
             String redisKey = tokenCache.createRedisKey(body);
@@ -55,8 +55,8 @@ public class Authoriz<T extends BaseBody> {
      * @param token
      * @return
      */
-    public T getBody(String token , Class<T> tClass){
-        return (T) tokenService.getBody(token , tClass);
+    public T getBody(String token){
+        return (T) tokenService.getBody(token).getBody();
     }
 
 

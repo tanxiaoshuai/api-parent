@@ -3,8 +3,6 @@ package cn.nmmpa.token.core;
 import cn.nmmpa.common.util.MD5Util;
 import cn.nmmpa.token.vo.BaseBody;
 import org.springframework.data.redis.core.RedisTemplate;
-
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -12,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2019/8/24 14:10
  * @Version 1.0
  */
-public class RedisTokenCache<T extends BaseBody> implements ITokenCache<T>{
+public class RedisTokenCache<T> implements ITokenCache<T>{
 
     /**
      * redis模板
@@ -47,15 +45,15 @@ public class RedisTokenCache<T extends BaseBody> implements ITokenCache<T>{
     }
 
     @Override
-    public String createRedisKey(T map) {
+    public String createRedisKey(BaseBody<T> body) {
         StringBuffer redisKey = new StringBuffer();
-        if(map.getPrefix() != null){
-            redisKey.append(map.getPrefix())
+        if(body.getPrefix() != null){
+            redisKey.append(body.getPrefix())
                     .append(":");
         }
         redisKey.append(MD5Util.MD5(
-                        new StringBuffer(map.getKey())
-                                .append(map.getEpx()).toString())
+                        new StringBuffer(body.getKey())
+                                .append(body.getEpx()).toString())
                 );
         return redisKey.toString();
     }

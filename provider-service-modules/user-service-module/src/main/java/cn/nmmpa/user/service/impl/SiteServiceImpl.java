@@ -6,12 +6,14 @@ import cn.nmmpa.common.util.MD5Util;
 import cn.nmmpa.common.util.RegexUtil;
 import cn.nmmpa.common.util.RequestUtil;
 import cn.nmmpa.token.core.Authoriz;
+import cn.nmmpa.token.vo.BaseBody;
 import cn.nmmpa.user.model.Site;
 import cn.nmmpa.user.service.ISiteService;
 import cn.nmmpa.common.base.service.impl.BaseServiceImpl;
 import cn.nmmpa.user.vo.SiteLoginRespVo;
 import cn.nmmpa.user.vo.SiteSecretVo;
 import cn.nmmpa.user.vo.TokenBody;
+import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,13 +55,14 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
         if(site == null || !pwd.equals(site.getPassWord())){
             throw new ProviderServiceException(ExceptionEnum.ACCOUNT_OR_PWD_ERROR);
         }
-        TokenBody tokenBody = new TokenBody();
-        tokenBody.setSiteCode(site.getSiteCode());
-        tokenBody.setPrefix("SITE");
-        tokenBody.setKey(site.getId().toString());
+        BaseBody<TokenBody> baseBody = new BaseBody<>();
+        baseBody.setBody(new TokenBody());
+        baseBody.getBody().setSiteCode(site.getSiteCode());
+        baseBody.setPrefix("SITE");
+        baseBody.setKey(site.getId().toString());
         SiteLoginRespVo siteLoginRespVo = new SiteLoginRespVo();
         BeanUtils.copyProperties(site , siteLoginRespVo);
-        String token = authoriz.createToken(tokenBody);
+        String token = authoriz.createToken(baseBody);
         siteLoginRespVo.setToken(token);
         return siteLoginRespVo;
     }
@@ -67,7 +70,7 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
     @Override
     public SiteSecretVo getSecret() {
         String token = RequestUtil.getToken();
-        TokenBody body = authoriz.getBody(token , TokenBody.class);
+        TokenBody body = authoriz.getBody(token);
         Site site = new Site();
         site.setSiteCode(body.getSiteCode());
         SiteSecretVo siteSecretVo = new SiteSecretVo();

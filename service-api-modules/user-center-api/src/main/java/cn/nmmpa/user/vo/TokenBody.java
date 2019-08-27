@@ -1,6 +1,5 @@
 package cn.nmmpa.user.vo;
 
-import cn.nmmpa.token.vo.BaseBody;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -9,7 +8,7 @@ import lombok.experimental.Accessors;
  */
 @Data
 @Accessors(chain = true)
-public class TokenBody extends BaseBody{
+public class TokenBody{
 
     private String siteCode;
 
