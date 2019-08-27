@@ -27,13 +27,13 @@ public class SiteController {
     @GetMapping("/login")
     public ResultEntity<SiteLoginRespVo> login(@RequestParam String account,
                                                @RequestParam String passWord,
-                                               @RequestParam String sign){
+                                               @RequestParam String sign) throws Exception {
         return ResultEntity.success(siteService.login(account , passWord , sign));
     }
 
     @ApiOperation("查看appId和Secret")
     @GetMapping("/secret")
-    public ResultEntity<SiteSecretVo> getSecret(){
+    public ResultEntity<SiteSecretVo> getSecret() throws Exception {
         return ResultEntity.success(siteService.getSecret());
     }
 

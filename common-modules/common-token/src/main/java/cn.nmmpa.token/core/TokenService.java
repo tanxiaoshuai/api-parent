@@ -11,60 +11,41 @@ import lombok.extern.slf4j.Slf4j;
  * @Version 1.0
  */
 @Slf4j
-public class TokenService<T> implements ITokenService<T>{
+public class TokenService implements ITokenService{
 
-    /**
-     * 设置token类型 (默认true为有状态走缓存 false无状态不走缓存)
-     */
-    private Boolean tokenType = true;
 
     private String publicKey;
 
     private String privateKey;
 
+    private String prefix = "TOKEN";
+
 
     @Override
-    public String createToken(BaseBody<T> body){
+    public String createToken(BaseBody body) throws Exception {
         String token = null;
         try {
             token = RsaUtil.encrypt(JSONObject.toJSONString(body) , publicKey);
         }catch (Exception e){
             log.error("创建token失败:{}" , e);
+            throw e;
         }
         return token;
     }
 
     @Override
-    public boolean checkToken(String token) {
-        boolean b = true;
-        try {
-            RsaUtil.decrypt(token, privateKey);
-        }catch (Exception e){
-            b = false;
-            log.error("token验证失败{}" , e);
-        }
-        return b;
-    }
-
-    @Override
-    public BaseBody<T> getBody(String token) {
-        BaseBody<T> tokenBody = null;
+    public BaseBody getBody(String token) throws Exception {
+        BaseBody tokenBody = null;
         try {
             String decrypt = RsaUtil.decrypt(token, privateKey);
             tokenBody = JSONObject.parseObject(decrypt , BaseBody.class);
         }catch (Exception e){
             log.info("body数据获取失败:{}" , e);
+            throw e;
         }
         return tokenBody;
     }
 
-    @Override
-    public TokenService setTokenType(Boolean b) {
-        if(b != null){
-            this.tokenType = b;
-        }
-        return this;
-    }
 
     public TokenService setPublicKey(String publicKey) {
         this.publicKey = publicKey;
@@ -76,7 +57,16 @@ public class TokenService<T> implements ITokenService<T>{
         return this;
     }
 
-    public Boolean getTokenType() {
-        return tokenType;
+    @Override
+    public TokenService setPrefix(String prefix) {
+        this.prefix = prefix;
+        return this;
     }
+
+    @Override
+    public String getPrefix() {
+        return this.prefix;
+    }
+
+
 }

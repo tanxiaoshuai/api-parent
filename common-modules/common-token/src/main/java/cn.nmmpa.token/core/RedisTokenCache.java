@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2019/8/24 14:10
  * @Version 1.0
  */
-public class RedisTokenCache<T> implements ITokenCache<T>{
+public class RedisTokenCache implements ITokenCache{
 
     /**
      * redis模板
@@ -40,20 +40,14 @@ public class RedisTokenCache<T> implements ITokenCache<T>{
     }
 
     @Override
-    public long getRefreshTime() {
-        return this.refreshTime;
-    }
-
-    @Override
-    public String createRedisKey(BaseBody<T> body) {
+    public String createRedisKey(String key , String prefix) {
         StringBuffer redisKey = new StringBuffer();
-        if(body.getPrefix() != null){
-            redisKey.append(body.getPrefix())
+        if(prefix != null){
+            redisKey.append(prefix)
                     .append(":");
         }
         redisKey.append(MD5Util.MD5(
-                        new StringBuffer(body.getKey())
-                                .append(body.getEpx()).toString())
+                        new StringBuffer(key).toString())
                 );
         return redisKey.toString();
     }

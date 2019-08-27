@@ -9,8 +9,6 @@ public class BaseBody<T> {
 
     private String key;
 
-    private String prefix = "TOKEN";
-
     private long epx = System.currentTimeMillis();
 
     private T body;
@@ -29,14 +27,6 @@ public class BaseBody<T> {
 
     public void setKey(String key) {
         this.key = key;
-    }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
     }
 
     public long getEpx() {

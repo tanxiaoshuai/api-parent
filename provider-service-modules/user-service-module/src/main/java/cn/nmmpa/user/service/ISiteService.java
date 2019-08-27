@@ -19,13 +19,13 @@ public interface ISiteService extends IBaseService<Site> {
      * @param sign
      * @return
      */
-    SiteLoginRespVo login(String account , String passWord , String sign);
+    SiteLoginRespVo login(String account , String passWord , String sign) throws Exception;
 
     /**
      * 获取当前站点的appId和secret
      * @return
      */
-    SiteSecretVo getSecret();
+    SiteSecretVo getSecret() throws Exception;
 
 
 

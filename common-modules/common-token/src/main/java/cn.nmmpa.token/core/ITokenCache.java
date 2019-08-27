@@ -2,14 +2,13 @@ package cn.nmmpa.token.core;
 
 import cn.nmmpa.token.vo.BaseBody;
 
-import java.util.Map;
 
 /**
  * @Author: tan shuai
  * @Date: 2019/8/24 14:02
  * @Version 1.0
  */
-public interface ITokenCache<T> {
+public interface ITokenCache {
 
     /**
      *
@@ -32,17 +31,12 @@ public interface ITokenCache<T> {
    void refreshTime(String key);
 
     /**
-     * 获取刷新时间
-     * @return
-     */
-   long getRefreshTime();
-
-    /**
      * 创建redis key
-     * @param body
+     * @param key
+     * @param prefix
      * @return
      */
-   String createRedisKey(BaseBody<T> body);
+   String createRedisKey(String key , String prefix);
 
     /**
      * 设置时间

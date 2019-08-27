@@ -7,30 +7,30 @@ import cn.nmmpa.token.vo.BaseBody;
  * @Date: 2019/8/24 14:37
  * @Version 1.0
  */
-public interface ITokenService<T> {
+public interface ITokenService {
 
     /**
      * 创建token
      * @param body
      */
-    String createToken(BaseBody<T> body) throws Exception;
-
-    /**
-     * 验证token
-     * @param token
-     */
-    boolean checkToken(String token) throws Exception;
+    String createToken(BaseBody body) throws Exception;
 
     /**
      * 获取body 参数
      * @param token
      * @return
      */
-    BaseBody<T> getBody(String token);
+    BaseBody getBody(String token) throws Exception;
 
     /**
-     * 设置token类型 (默认true为有状态走缓存 false无状态不走缓存)
-     * @param b
+     * 设置前缀
+     * @param prefix
      */
-    ITokenService setTokenType(Boolean b);
+    TokenService setPrefix(String prefix);
+
+    /**
+     * 获取前缀
+     */
+    String getPrefix();
+
 }
