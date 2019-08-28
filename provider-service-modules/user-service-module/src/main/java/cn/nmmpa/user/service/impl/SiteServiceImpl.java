@@ -64,11 +64,11 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
     }
 
     @Override
-    public SiteSecretVo getSecret() throws Exception {
-        String token = RequestUtil.getToken();
-        TokenBody body = authoriz.getBody(token , TokenBody.class);
+    public SiteSecretVo getSecret(String siteCode) throws Exception {
+//        String token = RequestUtil.getToken();
+//        TokenBody body = authoriz.getBody(token , TokenBody.class);
         Site site = new Site();
-        site.setSiteCode(body.getSiteCode());
+        site.setSiteCode(siteCode);
         SiteSecretVo siteSecretVo = new SiteSecretVo();
         BeanUtils.copyProperties(siteMapper.queryConditionsToObject(site) , siteSecretVo);
         return siteSecretVo;

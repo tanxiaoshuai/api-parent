@@ -63,9 +63,9 @@ public class MakeBaseXml {
         builder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         OutputUtilities.newLine(builder);
         builder.append(
-                "<!DOCTYPE mappers PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mappers.dtd\">");
+                "<!DOCTYPE mapper PUBLIC \"-//mybatis.org//DTD Mapper 3.0//EN\" \"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">");
         OutputUtilities.newLine(builder);
-        builder.append("<mappers namespace=\"" + namespace + "\">");
+        builder.append("<mapper namespace=\"" + namespace + "\">");
 
         /** ---------- resultMap Start ---------- */
         OutputUtilities.newLine(builder);
@@ -134,7 +134,7 @@ public class MakeBaseXml {
         queryConditionsToObject(builder , table , type);
         queryConditionsToList(builder , table , type);
         OutputUtilities.newLine(builder);
-        builder.append("</mappers>");
+        builder.append("</mapper>");
 
         String baseXmlPackages = PackageHolder.getBaseXmlPackage(table.getTableName());
         FileUtil.writeFile(PropertyHolder.getConfigProperty("target") + baseXmlPackages.replaceAll("\\.", "/") + "/"

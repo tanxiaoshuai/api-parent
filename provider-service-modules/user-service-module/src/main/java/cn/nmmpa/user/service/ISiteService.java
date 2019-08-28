@@ -23,9 +23,10 @@ public interface ISiteService extends IBaseService<Site> {
 
     /**
      * 获取当前站点的appId和secret
+     * @param siteCode
      * @return
      */
-    SiteSecretVo getSecret() throws Exception;
+    SiteSecretVo getSecret(String siteCode) throws Exception;
 
 
 

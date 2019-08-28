@@ -7,10 +7,7 @@ import cn.nmmpa.user.vo.SiteSecretVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by TS on 2019/8/26.
@@ -32,9 +29,9 @@ public class SiteController {
     }
 
     @ApiOperation("查看appId和Secret")
-    @GetMapping("/secret")
-    public ResultEntity<SiteSecretVo> getSecret() throws Exception {
-        return ResultEntity.success(siteService.getSecret());
+    @GetMapping("/secret/{siteCode}")
+    public ResultEntity<SiteSecretVo> getSecret(@PathVariable("siteCode") String siteCode) throws Exception {
+        return ResultEntity.success(siteService.getSecret(siteCode));
     }
 
 }
