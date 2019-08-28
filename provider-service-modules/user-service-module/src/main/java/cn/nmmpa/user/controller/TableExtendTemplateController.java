@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * @Author: tan shuai
  * @Date: 2019/8/28 17:30
@@ -29,5 +31,12 @@ public class TableExtendTemplateController {
     public ResultEntity add(@RequestBody TableExtendTemplateAddReqVo templateAddReqVo){
         tableExtendTemplateService.add(templateAddReqVo);
         return ResultEntity.success();
+    }
+
+    @ApiOperation("获取当前表扩展字段")
+    public ResultEntity<List<String>> selectByFields(String siteCode, String tableCode){
+        return ResultEntity
+                .success(tableExtendTemplateService.selectByFields(siteCode , tableCode));
+
     }
 }
