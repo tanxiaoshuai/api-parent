@@ -119,9 +119,6 @@
         update
             t_table_extend_template
         <set>
-            <if test="id != null">
-                id = #{id,jdbcType=BIGINT},
-            </if>
             <if test="siteCode != null">
                 site_code = #{siteCode,jdbcType=VARCHAR},
             </if>
@@ -222,9 +219,7 @@
     </select>
 
     <select id="selectByFields" resultType="java.lang.String">
-        select
-        <include refid="Base_Column_List" />
-        from
+        select field from
         t_table_extend_template
         where
         site_code = #{siteCode,jdbcType=VARCHAR}

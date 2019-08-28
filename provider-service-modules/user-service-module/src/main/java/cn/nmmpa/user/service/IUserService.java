@@ -10,4 +10,6 @@ import cn.nmmpa.common.base.service.IBaseService;
 public interface IUserService extends IBaseService<User> {
 
 
+
+
 }

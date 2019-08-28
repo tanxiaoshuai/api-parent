@@ -3,6 +3,7 @@ package cn.nmmpa.user.service;
 import cn.nmmpa.user.model.TableExtendTemplate;
 import cn.nmmpa.common.base.service.IBaseService;
 import cn.nmmpa.user.vo.TableExtendTemplateAddReqVo;
+import cn.nmmpa.user.vo.TableExtendTemplateDeleteReqVo;
 
 import java.util.List;
 
@@ -25,6 +26,12 @@ public interface ITableExtendTemplateService extends IBaseService<TableExtendTem
      * @return
      */
     List<String> selectByFields(String siteCode , String tableCode);
+
+    /**
+     * 删除
+     * @param templateDeleteReqVo
+     */
+    void deleteById(TableExtendTemplateDeleteReqVo templateDeleteReqVo);
 
 
 }

@@ -18,6 +18,8 @@ public enum ExceptionEnum {
 
     PARAM_ERROR(400 , "参数错误"),
 
+    DELETE_ERROR(203 , "删除失败"),
+
     ACCOUNT_OR_PWD_ERROR(403, "账户或密码错误")
     ;
     int code;

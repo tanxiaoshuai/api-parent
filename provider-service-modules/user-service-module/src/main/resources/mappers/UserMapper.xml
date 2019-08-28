@@ -159,9 +159,6 @@
         update
             t_user
         <set>
-            <if test="id != null">
-                id = #{id,jdbcType=BIGINT},
-            </if>
             <if test="userCode != null">
                 user_code = #{userCode,jdbcType=VARCHAR},
             </if>

@@ -1,11 +1,17 @@
 package cn.nmmpa.user.service.impl;
 
 import cn.nmmpa.common.exception.AssertUtil;
+import cn.nmmpa.common.exception.ProviderServiceException;
+import cn.nmmpa.common.response.ExceptionEnum;
 import cn.nmmpa.user.model.TableExtendTemplate;
 import cn.nmmpa.user.service.ITableExtendTemplateService;
 import cn.nmmpa.common.base.service.impl.BaseServiceImpl;
 import cn.nmmpa.user.vo.TableExtendTemplateAddReqVo;
+import cn.nmmpa.user.vo.TableExtendTemplateDeleteReqVo;
 import org.springframework.beans.BeanUtils;
+import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import cn.nmmpa.user.mapper.TableExtendTemplateMapper;
@@ -18,6 +24,7 @@ import java.util.List;
  * @version 1.0 2019年8月28日
  */
 @Service
+@CacheConfig(cacheNames = "TABLE_EXTEND_FIELDS")
 public class TableExtendTemplateServiceImpl extends BaseServiceImpl<TableExtendTemplateMapper , TableExtendTemplate> implements ITableExtendTemplateService {
 
     @Autowired
@@ -29,6 +36,7 @@ public class TableExtendTemplateServiceImpl extends BaseServiceImpl<TableExtendT
     }
 
     @Override
+    @CacheEvict(key = "#templateAddReqVo.siteCode+'_'+#templateAddReqVo.tableCode")
     public void add(TableExtendTemplateAddReqVo templateAddReqVo) {
         Date date = new Date();
         TableExtendTemplate tableExtendTemplate = new TableExtendTemplate();
@@ -40,9 +48,22 @@ public class TableExtendTemplateServiceImpl extends BaseServiceImpl<TableExtendT
     }
 
     @Override
+    @Cacheable(key = "#siteCode+'_'+ #tableCode" ,sync = true)
     public List<String> selectByFields(String siteCode, String tableCode) {
         AssertUtil.isNotNull(siteCode , "站点code不能为空");
         AssertUtil.isNotNull(tableCode , "表code不能为空");
         return tableExtendTemplateMapper.selectByFields(siteCode, tableCode);
+    }
+
+    @Override
+    @CacheEvict(key = "#templateDeleteReqVo.siteCode+'_'+#templateDeleteReqVo.tableCode")
+    public void deleteById(TableExtendTemplateDeleteReqVo templateDeleteReqVo) {
+        TableExtendTemplate template = new TableExtendTemplate();
+        template.setId(templateDeleteReqVo.getId());
+        template.setIsDelete(1);
+        int res = tableExtendTemplateMapper.updateById(template);
+        if(res == 0){
+            throw new ProviderServiceException(ExceptionEnum.DELETE_ERROR);
+        }
     }
 }

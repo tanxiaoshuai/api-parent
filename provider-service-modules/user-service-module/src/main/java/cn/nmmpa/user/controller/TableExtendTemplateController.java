@@ -3,13 +3,12 @@ package cn.nmmpa.user.controller;
 import cn.nmmpa.common.response.ResultEntity;
 import cn.nmmpa.user.service.ITableExtendTemplateService;
 import cn.nmmpa.user.vo.TableExtendTemplateAddReqVo;
+import cn.nmmpa.user.vo.TableExtendTemplateDeleteReqVo;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,9 +33,17 @@ public class TableExtendTemplateController {
     }
 
     @ApiOperation("获取当前表扩展字段")
-    public ResultEntity<List<String>> selectByFields(String siteCode, String tableCode){
+    @GetMapping("/selectByFields")
+    public ResultEntity<List<String>> selectByFields(@RequestParam String siteCode,
+                                                     @RequestParam String tableCode){
         return ResultEntity
                 .success(tableExtendTemplateService.selectByFields(siteCode , tableCode));
+    }
 
+    @ApiModelProperty("按id删除扩展字段")
+    @PostMapping("/deleteById")
+    public ResultEntity deleteById(@RequestBody TableExtendTemplateDeleteReqVo templateDeleteReqVo){
+        tableExtendTemplateService.deleteById(templateDeleteReqVo);
+        return ResultEntity.success();
     }
 }
