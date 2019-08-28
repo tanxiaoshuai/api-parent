@@ -1,11 +1,14 @@
 package cn.nmmpa.user.config;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 
 /**
+ * @author
  * Created by TS on 2019/8/27.
  */
+@Data
 @Configuration
 public class SiteTokeConfig {
 
@@ -18,27 +21,7 @@ public class SiteTokeConfig {
     @Value("${token.prefix}")
     private String prefix;
 
-    public String getPublicKey() {
-        return publicKey;
-    }
+    @Value("${token.refreshTime}")
+    private Long refreshTime;
 
-    public void setPublicKey(String publicKey) {
-        this.publicKey = publicKey;
-    }
-
-    public String getPrivateKey() {
-        return privateKey;
-    }
-
-    public void setPrivateKey(String privateKey) {
-        this.privateKey = privateKey;
-    }
-
-    public String getPrefix() {
-        return prefix;
-    }
-
-    public void setPrefix(String prefix) {
-        this.prefix = prefix;
-    }
 }

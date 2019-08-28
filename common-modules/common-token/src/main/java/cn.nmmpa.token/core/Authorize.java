@@ -10,7 +10,7 @@ import com.alibaba.fastjson.JSONObject;
  * @Date: 2019/8/24 15:30
  * @Version 1.0
  */
-public class Authoriz {
+public class Authorize {
 
     private ITokenService tokenService;
 
@@ -55,12 +55,12 @@ public class Authoriz {
     }
 
 
-    public Authoriz setTokenService(TokenService tokenService) {
+    public Authorize setTokenService(TokenService tokenService) {
         this.tokenService = tokenService;
         return this;
     }
 
-    public Authoriz setTokenCache(ITokenCache tokenCache) {
+    public Authorize setTokenCache(ITokenCache tokenCache) {
         this.tokenCache = tokenCache;
         return this;
     }

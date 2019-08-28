@@ -5,7 +5,7 @@ import cn.nmmpa.common.response.ExceptionEnum;
 import cn.nmmpa.common.util.MD5Util;
 import cn.nmmpa.common.util.RegexUtil;
 import cn.nmmpa.common.util.RequestUtil;
-import cn.nmmpa.token.core.Authoriz;
+import cn.nmmpa.token.core.Authorize;
 import cn.nmmpa.token.vo.BaseBody;
 import cn.nmmpa.user.model.Site;
 import cn.nmmpa.user.service.ISiteService;
@@ -13,13 +13,10 @@ import cn.nmmpa.common.base.service.impl.BaseServiceImpl;
 import cn.nmmpa.user.vo.SiteLoginRespVo;
 import cn.nmmpa.user.vo.SiteSecretVo;
 import cn.nmmpa.user.vo.TokenBody;
-import jdk.nashorn.internal.parser.Token;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import cn.nmmpa.user.mapper.SiteMapper;
-
-import java.util.Map;
 
 /**
  * @author TanShuai
@@ -32,7 +29,7 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
     private SiteMapper siteMapper;
 
     @Autowired
-    private Authoriz authoriz;
+    private Authorize authoriz;
 
     @Override
     public SiteMapper getMapper(){ 

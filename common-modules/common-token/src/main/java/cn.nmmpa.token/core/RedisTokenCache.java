@@ -1,7 +1,6 @@
 package cn.nmmpa.token.core;
 
 import cn.nmmpa.common.util.MD5Util;
-import cn.nmmpa.token.vo.BaseBody;
 import org.springframework.data.redis.core.RedisTemplate;
 import java.util.concurrent.TimeUnit;
 
