@@ -4,6 +4,8 @@ import cn.nmmpa.user.model.TableExtendTemplate;
 import cn.nmmpa.common.base.service.IBaseService;
 import cn.nmmpa.user.vo.TableExtendTemplateAddReqVo;
 
+import java.util.List;
+
 /**
  * @author TanShuai
  * @version 1.0 2019年8月28日
@@ -15,6 +17,14 @@ public interface ITableExtendTemplateService extends IBaseService<TableExtendTem
      * @param templateAddReqVo
      */
     void add(TableExtendTemplateAddReqVo templateAddReqVo);
+
+    /**
+     * 查询表对应的扩展字段
+     * @param siteCode
+     * @param tableCode
+     * @return
+     */
+    List<String> selectByFields(String siteCode , String tableCode);
 
 
 }

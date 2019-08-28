@@ -220,4 +220,15 @@
             </if>
         </where>
     </select>
+
+    <select id="selectByFields" resultType="java.lang.String">
+        select
+        <include refid="Base_Column_List" />
+        from
+        t_table_extend_template
+        where
+        site_code = #{siteCode,jdbcType=VARCHAR}
+        AND table_code = #{tableCode,jdbcType=VARCHAR}
+        AND is_delete = 0
+    </select>
 </mapper>

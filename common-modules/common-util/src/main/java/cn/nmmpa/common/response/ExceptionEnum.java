@@ -16,6 +16,8 @@ public enum ExceptionEnum {
 
     ERROR(500 , "操作失败"),
 
+    PARAM_ERROR(400 , "参数错误"),
+
     ACCOUNT_OR_PWD_ERROR(403, "账户或密码错误")
     ;
     int code;

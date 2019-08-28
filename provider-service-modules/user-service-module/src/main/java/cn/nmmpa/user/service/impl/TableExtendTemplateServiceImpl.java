@@ -1,5 +1,6 @@
 package cn.nmmpa.user.service.impl;
 
+import cn.nmmpa.common.exception.AssertUtil;
 import cn.nmmpa.user.model.TableExtendTemplate;
 import cn.nmmpa.user.service.ITableExtendTemplateService;
 import cn.nmmpa.common.base.service.impl.BaseServiceImpl;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import cn.nmmpa.user.mapper.TableExtendTemplateMapper;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author TanShuai
@@ -35,5 +37,12 @@ public class TableExtendTemplateServiceImpl extends BaseServiceImpl<TableExtendT
         tableExtendTemplate.setCreateTime(date);
         tableExtendTemplate.setUpdateTime(date);
         this.tableExtendTemplateMapper.insert(tableExtendTemplate);
+    }
+
+    @Override
+    public List<String> selectByFields(String siteCode, String tableCode) {
+        AssertUtil.isNotNull(siteCode , "站点code不能为空");
+        AssertUtil.isNotNull(tableCode , "表code不能为空");
+        return tableExtendTemplateMapper.selectByFields(siteCode, tableCode);
     }
 }
