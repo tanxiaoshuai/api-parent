@@ -13,6 +13,7 @@
     <modules>
 
         <module>user-service-module</module>
+        <module>field-service-module</module>
     </modules>
 
     <dependencies>
