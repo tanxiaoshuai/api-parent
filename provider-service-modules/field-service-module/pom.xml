@@ -14,15 +14,17 @@
     <version>1.0.0</version>
     <dependencies>
         <dependency>
-            <groupId>io.swagger</groupId>
-            <artifactId>swagger-annotations</artifactId>
-            <version>1.5.20</version>
-            <scope>compile</scope>
+            <groupId>cn.nmmpa</groupId>
+            <artifactId>common-swagger</artifactId>
         </dependency>
         <dependency>
             <groupId>cn.nmmpa</groupId>
             <artifactId>field-service-api</artifactId>
             <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>cn.nmmpa</groupId>
+            <artifactId>common-mysql-druid</artifactId>
         </dependency>
     </dependencies>
 

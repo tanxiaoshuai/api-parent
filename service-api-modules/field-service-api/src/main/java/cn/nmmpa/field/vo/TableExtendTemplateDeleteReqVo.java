@@ -1,4 +1,4 @@
-package cn.nmmpa.user.vo;
+package cn.nmmpa.field.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

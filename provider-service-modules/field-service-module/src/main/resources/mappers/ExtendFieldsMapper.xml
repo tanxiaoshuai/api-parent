@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.nmmpa.field.mappers.ExtendFieldsMapper">
+<mapper namespace="cn.nmmpa.field.mapper.ExtendFieldsMapper">
     <resultMap id="BaseResultMap" type="cn.nmmpa.field.model.ExtendFields">
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="field" jdbcType="VARCHAR" property="field" />
@@ -13,7 +13,7 @@
     <sql id="Base_Column_List">
         id,
         field,
-        value,
+        `value`,
         user_code,
         table_code,
         create_time,
@@ -31,7 +31,7 @@
                 field,
             </if>
             <if test="value != null">
-                value,
+                `value`,
             </if>
             <if test="userCode != null">
                 user_code,
@@ -77,7 +77,7 @@
         <trim prefix="(" suffix=")" suffixOverrides=",">
             id,
             field,
-            value,
+            `value`,
             user_code,
             table_code,
             create_time,
@@ -116,7 +116,7 @@
                 field = #{field,jdbcType=VARCHAR},
             </if>
             <if test="value != null">
-                value = #{value,jdbcType=VARCHAR},
+                `value` = #{value,jdbcType=VARCHAR},
             </if>
             <if test="userCode != null">
                 user_code = #{userCode,jdbcType=VARCHAR},
@@ -155,7 +155,7 @@
                  AND field = #{field,jdbcType=VARCHAR}
             </if>
             <if test="value != null">
-                 AND value = #{value,jdbcType=VARCHAR}
+                 AND `value` = #{value,jdbcType=VARCHAR}
             </if>
             <if test="userCode != null">
                  AND user_code = #{userCode,jdbcType=VARCHAR}
@@ -185,7 +185,7 @@
                  AND field = #{field,jdbcType=VARCHAR}
             </if>
             <if test="value != null">
-                 AND value = #{value,jdbcType=VARCHAR}
+                 AND `value` = #{value,jdbcType=VARCHAR}
             </if>
             <if test="userCode != null">
                  AND user_code = #{userCode,jdbcType=VARCHAR}

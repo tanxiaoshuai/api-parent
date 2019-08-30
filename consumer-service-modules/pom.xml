@@ -11,7 +11,7 @@
     <artifactId>consumer-service-modules</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>pet-wchat-app</module>
+        <module>api-web-service</module>
     </modules>
 
     <dependencies>

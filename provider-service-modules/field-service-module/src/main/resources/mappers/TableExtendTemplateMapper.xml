@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.nmmpa.field.mappers.TableExtendTemplateMapper">
+<mapper namespace="cn.nmmpa.field.mapper.TableExtendTemplateMapper">
     <resultMap id="BaseResultMap" type="cn.nmmpa.field.model.TableExtendTemplate">
         <id column="id" jdbcType="BIGINT" property="id" />
         <result column="site_code" jdbcType="VARCHAR" property="siteCode" />
@@ -15,7 +15,7 @@
         id,
         site_code,
         field,
-        describe,
+        `describe`,
         table_code,
         is_delete,
         create_time,
@@ -36,7 +36,7 @@
                 field,
             </if>
             <if test="describe != null">
-                describe,
+                `describe`,
             </if>
             <if test="tableCode != null">
                 table_code,
@@ -86,7 +86,7 @@
             id,
             site_code,
             field,
-            describe,
+            `describe`,
             table_code,
             is_delete,
             create_time,
@@ -119,9 +119,6 @@
         update
             t_table_extend_template
         <set>
-            <if test="id != null">
-                id = #{id,jdbcType=BIGINT},
-            </if>
             <if test="siteCode != null">
                 site_code = #{siteCode,jdbcType=VARCHAR},
             </if>
@@ -129,7 +126,7 @@
                 field = #{field,jdbcType=VARCHAR},
             </if>
             <if test="describe != null">
-                describe = #{describe,jdbcType=VARCHAR},
+                `describe` = #{describe,jdbcType=VARCHAR},
             </if>
             <if test="tableCode != null">
                 table_code = #{tableCode,jdbcType=VARCHAR},
@@ -171,7 +168,7 @@
                  AND field = #{field,jdbcType=VARCHAR}
             </if>
             <if test="describe != null">
-                 AND describe = #{describe,jdbcType=VARCHAR}
+                 AND `describe` = #{describe,jdbcType=VARCHAR}
             </if>
             <if test="tableCode != null">
                  AND table_code = #{tableCode,jdbcType=VARCHAR}
@@ -204,7 +201,7 @@
                  AND field = #{field,jdbcType=VARCHAR}
             </if>
             <if test="describe != null">
-                 AND describe = #{describe,jdbcType=VARCHAR}
+                 AND `describe` = #{describe,jdbcType=VARCHAR}
             </if>
             <if test="tableCode != null">
                  AND table_code = #{tableCode,jdbcType=VARCHAR}
@@ -219,5 +216,14 @@
                  AND update_time = #{updateTime,jdbcType=TIMESTAMP}
             </if>
         </where>
+    </select>
+
+    <select id="selectByFields" resultType="java.lang.String">
+        select field from
+        t_table_extend_template
+        where
+        site_code = #{siteCode,jdbcType=VARCHAR}
+        AND table_code = #{tableCode,jdbcType=VARCHAR}
+        AND is_delete = 0
     </select>
 </mapper>
