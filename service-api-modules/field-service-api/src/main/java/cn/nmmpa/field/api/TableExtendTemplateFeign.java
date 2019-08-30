@@ -24,7 +24,7 @@ public interface TableExtendTemplateFeign {
      * @param templateAddReqVo
      * @return
      */
-    @PostMapping("/add")
+    @PostMapping("/tableExtendTemplate/add")
     ResultEntity add(@RequestBody TableExtendTemplateAddReqVo templateAddReqVo);
 
     /**
@@ -33,7 +33,7 @@ public interface TableExtendTemplateFeign {
      * @param tableCode
      * @return
      */
-    @GetMapping("/selectByFields")
+    @GetMapping("/tableExtendTemplate/selectByFields")
     ResultEntity<List<String>> selectByFields(@RequestParam String siteCode,
                                                      @RequestParam String tableCode);
 
@@ -42,6 +42,6 @@ public interface TableExtendTemplateFeign {
      * @param templateDeleteReqVo
      * @return
      */
-    @PostMapping("/deleteById")
+    @PostMapping("/tableExtendTemplate/deleteById")
     ResultEntity deleteById(@RequestBody TableExtendTemplateDeleteReqVo templateDeleteReqVo);
 }

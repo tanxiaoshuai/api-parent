@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
  **/
 @SpringBootApplication
 @ComponentScan(basePackages = {"cn.nmmpa"})
-public class FieldSeviceApplication {
+public class FieldServiceApplication {
     public static void main(String[] args) {
-        SpringApplication.run(FieldSeviceApplication.class,args);
+        SpringApplication.run(FieldServiceApplication.class,args);
     }
 }
