@@ -21,6 +21,7 @@
         <module>common-generator</module>
         <module>common-aop</module>
         <module>common-token</module>
+        <module>common-seata</module>
     </modules>
 
     <build>
