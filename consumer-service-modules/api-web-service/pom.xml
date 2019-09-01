@@ -16,6 +16,11 @@
             <groupId>cn.nmmpa</groupId>
             <artifactId>common-aop</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.nmmpa</groupId>
+            <artifactId>field-service-api</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
 

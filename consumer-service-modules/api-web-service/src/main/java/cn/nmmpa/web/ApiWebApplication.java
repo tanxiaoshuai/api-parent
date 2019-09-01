@@ -13,9 +13,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringCloudApplication
 @EnableFeignClients(basePackages = {"cn.nmmpa"})
 @ComponentScan(basePackages = {"cn.nmmpa"})
-public class PetWchatAppApplication {
+public class ApiWebApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PetWchatAppApplication.class , args);
+        SpringApplication.run(ApiWebApplication.class , args);
     }
 }

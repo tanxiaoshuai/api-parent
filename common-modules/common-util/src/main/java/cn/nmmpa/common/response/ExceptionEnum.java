@@ -20,7 +20,9 @@ public enum ExceptionEnum {
 
     DELETE_ERROR(203 , "删除失败"),
 
-    ACCOUNT_OR_PWD_ERROR(403, "账户或密码错误")
+    ACCOUNT_OR_PWD_ERROR(403, "账户或密码错误"),
+
+    HYSTRIX(204 , "网络连接失败，请重试!")
     ;
     int code;
     String message;

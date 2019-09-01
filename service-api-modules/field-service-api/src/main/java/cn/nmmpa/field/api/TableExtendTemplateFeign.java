@@ -1,6 +1,7 @@
 package cn.nmmpa.field.api;
 
 import cn.nmmpa.common.response.ResultEntity;
+import cn.nmmpa.field.api.hystrix.TableExtendTemplateHystrix;
 import cn.nmmpa.field.vo.TableExtendTemplateAddReqVo;
 import cn.nmmpa.field.vo.TableExtendTemplateDeleteReqVo;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -16,7 +17,7 @@ import java.util.List;
  * @Date: 2019/8/30 15:58
  * @Version 1.0
  */
-@FeignClient(value = "FIELD-SERVICE-MODULES")
+@FeignClient(value = "FIELD-SERVICE-MODULES" , fallbackFactory = TableExtendTemplateHystrix.class)
 public interface TableExtendTemplateFeign {
 
     /**
@@ -34,8 +35,8 @@ public interface TableExtendTemplateFeign {
      * @return
      */
     @GetMapping("/tableExtendTemplate/selectByFields")
-    ResultEntity<List<String>> selectByFields(@RequestParam String siteCode,
-                                                     @RequestParam String tableCode);
+    ResultEntity<List<String>> selectByFields(@RequestParam("siteCode") String siteCode,
+                                              @RequestParam("tableCode") String tableCode);
 
     /**
      * 查询当前站点下对应扩展字段模板

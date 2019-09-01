@@ -3,6 +3,7 @@ package cn.nmmpa.field.mapper;
 import cn.nmmpa.common.base.mapper.BaseMapper;
 import cn.nmmpa.field.model.TableExtendTemplate;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -21,5 +22,6 @@ public interface TableExtendTemplateMapper extends BaseMapper<TableExtendTemplat
      * @param tableCode
      * @return
      */
-    List<String> selectByFields(String siteCode, String tableCode);
+    List<String> selectByFields(@Param("siteCode") String siteCode,
+                                @Param("tableCode") String tableCode);
 }

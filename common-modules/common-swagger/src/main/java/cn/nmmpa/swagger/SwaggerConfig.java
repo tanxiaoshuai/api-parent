@@ -1,4 +1,4 @@
-package cn.nmmpa.field.config;
+package cn.nmmpa.swagger;
 
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
