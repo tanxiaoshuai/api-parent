@@ -9,6 +9,7 @@ import cn.nmmpa.field.service.ITableExtendTemplateService;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import cn.nmmpa.field.mapper.ExtendFieldsMapper;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -60,6 +61,7 @@ public class ExtendFieldsServiceImpl extends BaseServiceImpl<ExtendFieldsMapper 
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public void addExtendFields(BaseExtendFields extendFields, String userCode,
                                 String tableCode, String siteCode) {
         if(extendFields != null && extendFields.getExtendFields() != null

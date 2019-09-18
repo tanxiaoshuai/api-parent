@@ -23,9 +23,8 @@ public class SiteController {
     @ApiOperation("站点登陆")
     @GetMapping("/login")
     public ResultEntity<SiteLoginRespVo> login(@RequestParam String account,
-                                               @RequestParam String passWord,
-                                               @RequestParam String sign) throws Exception {
-        return ResultEntity.success(siteService.login(account , passWord , sign));
+                                               @RequestParam String passWord) throws Exception {
+        return ResultEntity.success(siteService.login(account , passWord));
     }
 
     @ApiOperation("查看appId和Secret")

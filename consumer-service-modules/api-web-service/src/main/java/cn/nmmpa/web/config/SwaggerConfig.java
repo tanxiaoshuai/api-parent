@@ -1,4 +1,4 @@
-package cn.nmmpa.user.config;
+package cn.nmmpa.web.config;
 
 import cn.nmmpa.swagger.SawaggerBase;
 import cn.nmmpa.swagger.SwaggerBean;
@@ -9,22 +9,20 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * @Author: tan shuai
- * @Date: 2019/9/18 16:04
+ * @Date: 2019/9/18 17:53
  * @Version 1.0
  */
 @EnableSwagger2
 @Configuration
 public class SwaggerConfig {
 
-
     @Bean
     public Docket siteDocket(){
         SwaggerBean swaggerBean = new SwaggerBean();
         swaggerBean.setIsToken(false);
-        swaggerBean.setTitle("站点管理");
+        swaggerBean.setTitle("API后台管理");
         swaggerBean.setVersion("1.0.0");
-        swaggerBean.setBasePackage("cn.nmmpa.user.controller");
+        swaggerBean.setBasePackage("cn.nmmpa.web.controller");
         return SawaggerBase.createRestApi(swaggerBean);
     }
-
 }

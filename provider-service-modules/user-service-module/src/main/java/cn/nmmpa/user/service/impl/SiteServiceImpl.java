@@ -37,7 +37,7 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
     }
 
     @Override
-    public SiteLoginRespVo login(String account, String passWord, String sign) throws Exception {
+    public SiteLoginRespVo login(String account, String passWord) throws Exception {
         Site site = new Site();
         //判断登陆方式
         if(RegexUtil.isAccount(account)){
@@ -65,8 +65,6 @@ public class SiteServiceImpl extends BaseServiceImpl<SiteMapper , Site> implemen
 
     @Override
     public SiteSecretVo getSecret(String siteCode) throws Exception {
-//        String token = RequestUtil.getToken();
-//        TokenBody body = authoriz.getBody(token , TokenBody.class);
         Site site = new Site();
         site.setSiteCode(siteCode);
         SiteSecretVo siteSecretVo = new SiteSecretVo();

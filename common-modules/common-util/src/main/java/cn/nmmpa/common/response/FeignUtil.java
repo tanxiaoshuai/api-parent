@@ -34,4 +34,16 @@ public class FeignUtil {
     public static <T> T getDataCatchException(ResultEntity<T> resultEntity){
         return resultEntity.getData();
     }
+
+    /**
+     * 检验是否调用成功
+     * @param resultEntity
+     * @param <T>
+     */
+    public static <T> void  checkResp(ResultEntity<T> resultEntity){
+        //如果不为200 表示调用失败 直接抛异常
+        if(resultEntity.getStatus() != ExceptionEnum.SUCCESS.code){
+            throw new FeignException(resultEntity.getStatus() , resultEntity.getMessage());
+        }
+    }
 }

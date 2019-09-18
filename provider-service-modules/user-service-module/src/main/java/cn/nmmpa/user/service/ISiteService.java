@@ -16,10 +16,9 @@ public interface ISiteService extends IBaseService<Site> {
      * 站点登陆
      * @param account
      * @param passWord
-     * @param sign
      * @return
      */
-    SiteLoginRespVo login(String account , String passWord , String sign) throws Exception;
+    SiteLoginRespVo login(String account , String passWord) throws Exception;
 
     /**
      * 获取当前站点的appId和secret
