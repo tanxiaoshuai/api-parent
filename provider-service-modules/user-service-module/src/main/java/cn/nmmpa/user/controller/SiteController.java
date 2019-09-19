@@ -1,6 +1,7 @@
 package cn.nmmpa.user.controller;
 
 import cn.nmmpa.common.response.ResultEntity;
+import cn.nmmpa.user.model.Site;
 import cn.nmmpa.user.service.ISiteService;
 import cn.nmmpa.user.vo.SiteLoginRespVo;
 import cn.nmmpa.user.vo.SiteSecretVo;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
+ * @author mister Tan
  * Created by TS on 2019/8/26.
  */
 @RestController
@@ -31,6 +33,14 @@ public class SiteController {
     @GetMapping("/secret/{siteCode}")
     public ResultEntity<SiteSecretVo> getSecret(@PathVariable("siteCode") String siteCode) throws Exception {
         return ResultEntity.success(siteService.getSecret(siteCode));
+    }
+
+    @ApiOperation("根据具体条件查询站点信息")
+    @PostMapping("/queryConditionsToObject")
+    public ResultEntity<Site> queryConditionsToObject(@RequestBody Site site) throws Exception{
+        site = siteService.queryConditionsToObject(site);
+        site.setPassWord(null);
+        return ResultEntity.success(site);
     }
 
 }

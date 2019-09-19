@@ -14,6 +14,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 @FeignClient(value = "USER-SERVICE-MODULE")
 public interface UserFeign {
 
+    /**
+     * 新增站点用户
+     * @param user
+     * @return
+     * @throws Exception
+     */
     @PostMapping("/user/add")
     ResultEntity add(@RequestBody User user) throws Exception;
 }

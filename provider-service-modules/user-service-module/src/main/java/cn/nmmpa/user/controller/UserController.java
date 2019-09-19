@@ -27,7 +27,7 @@ public class UserController {
     @ApiOperation("新增用户")
     @PostMapping("/add")
     public ResultEntity add(@RequestBody User user) throws Exception {
-        userService.insert(user);
+        userService.add(user);
         return ResultEntity.success();
     }
 }

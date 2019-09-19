@@ -13,5 +13,13 @@ import cn.nmmpa.common.base.mapper.BaseMapper;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
+    /**
+     * 验证该站点下手机号是否注册
+     * @param tel
+     * @param siteCode
+     * @return
+     */
+    int checkTel(String tel , String siteCode);
+
 
 }

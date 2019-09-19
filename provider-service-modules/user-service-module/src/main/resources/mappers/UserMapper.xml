@@ -7,9 +7,11 @@
         <result column="user_name" jdbcType="VARCHAR" property="userName" />
         <result column="head_img" jdbcType="VARCHAR" property="headImg" />
         <result column="tel" jdbcType="VARCHAR" property="tel" />
+        <result column="sex" jdbcType="INTEGER" property="sex" />
         <result column="pass_word" jdbcType="VARCHAR" property="passWord" />
         <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
         <result column="salt" jdbcType="VARCHAR" property="salt" />
+        <result column="site_code" jdbcType="VARCHAR" property="siteCode" />
         <result column="user_status" jdbcType="INTEGER" property="userStatus" />
         <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
@@ -21,9 +23,11 @@
         user_name,
         head_img,
         tel,
+        sex,
         pass_word,
         register_time,
         salt,
+        site_code,
         user_status,
         is_delete,
         create_time,
@@ -49,6 +53,9 @@
             <if test="tel != null">
                 tel,
             </if>
+            <if test="sex != null">
+                sex,
+            </if>
             <if test="passWord != null">
                 pass_word,
             </if>
@@ -57,6 +64,9 @@
             </if>
             <if test="salt != null">
                 salt,
+            </if>
+            <if test="siteCode != null">
+                site_code,
             </if>
             <if test="userStatus != null">
                 user_status,
@@ -87,6 +97,9 @@
             <if test="tel != null">
                 #{tel,jdbcType=VARCHAR},
             </if>
+            <if test="sex != null">
+                #{sex,jdbcType=INTEGER},
+            </if>
             <if test="passWord != null">
                 #{passWord,jdbcType=VARCHAR},
             </if>
@@ -95,6 +108,9 @@
             </if>
             <if test="salt != null">
                 #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="siteCode != null">
+                #{siteCode,jdbcType=VARCHAR},
             </if>
             <if test="userStatus != null">
                 #{userStatus,jdbcType=INTEGER},
@@ -120,9 +136,11 @@
             user_name,
             head_img,
             tel,
+            sex,
             pass_word,
             register_time,
             salt,
+            site_code,
             user_status,
             is_delete,
             create_time,
@@ -135,9 +153,11 @@
                 #{item.userName,jdbcType=VARCHAR},
                 #{item.headImg,jdbcType=VARCHAR},
                 #{item.tel,jdbcType=VARCHAR},
+                #{item.sex,jdbcType=INTEGER},
                 #{item.passWord,jdbcType=VARCHAR},
                 #{item.registerTime,jdbcType=TIMESTAMP},
                 #{item.salt,jdbcType=VARCHAR},
+                #{item.siteCode,jdbcType=VARCHAR},
                 #{item.userStatus,jdbcType=INTEGER},
                 #{item.isDelete,jdbcType=INTEGER},
                 #{item.createTime,jdbcType=TIMESTAMP},
@@ -159,6 +179,9 @@
         update
             t_user
         <set>
+            <if test="id != null">
+                id = #{id,jdbcType=BIGINT},
+            </if>
             <if test="userCode != null">
                 user_code = #{userCode,jdbcType=VARCHAR},
             </if>
@@ -171,6 +194,9 @@
             <if test="tel != null">
                 tel = #{tel,jdbcType=VARCHAR},
             </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=INTEGER},
+            </if>
             <if test="passWord != null">
                 pass_word = #{passWord,jdbcType=VARCHAR},
             </if>
@@ -179,6 +205,9 @@
             </if>
             <if test="salt != null">
                 salt = #{salt,jdbcType=VARCHAR},
+            </if>
+            <if test="siteCode != null">
+                site_code = #{siteCode,jdbcType=VARCHAR},
             </if>
             <if test="userStatus != null">
                 user_status = #{userStatus,jdbcType=INTEGER},
@@ -225,6 +254,9 @@
             <if test="tel != null">
                  AND tel = #{tel,jdbcType=VARCHAR}
             </if>
+            <if test="sex != null">
+                 AND sex = #{sex,jdbcType=INTEGER}
+            </if>
             <if test="passWord != null">
                  AND pass_word = #{passWord,jdbcType=VARCHAR}
             </if>
@@ -233,6 +265,9 @@
             </if>
             <if test="salt != null">
                  AND salt = #{salt,jdbcType=VARCHAR}
+            </if>
+            <if test="siteCode != null">
+                 AND site_code = #{siteCode,jdbcType=VARCHAR}
             </if>
             <if test="userStatus != null">
                  AND user_status = #{userStatus,jdbcType=INTEGER}
@@ -249,7 +284,7 @@
         </where>
     </select>
     <!-- 按条件查询 对象 -->
-    <select id="queryConditionsToList" parameterType="cn.nmmpa.user.model.User" resultType="cn.nmmpa.user.model.User">
+    <select id="queryConditionsToList" parameterType="cn.nmmpa.user.model.User" resultMap="BaseResultMap">
         select
             <include refid="Base_Column_List" />
         from
@@ -270,6 +305,9 @@
             <if test="tel != null">
                  AND tel = #{tel,jdbcType=VARCHAR}
             </if>
+            <if test="sex != null">
+                 AND sex = #{sex,jdbcType=INTEGER}
+            </if>
             <if test="passWord != null">
                  AND pass_word = #{passWord,jdbcType=VARCHAR}
             </if>
@@ -278,6 +316,9 @@
             </if>
             <if test="salt != null">
                  AND salt = #{salt,jdbcType=VARCHAR}
+            </if>
+            <if test="siteCode != null">
+                 AND site_code = #{siteCode,jdbcType=VARCHAR}
             </if>
             <if test="userStatus != null">
                  AND user_status = #{userStatus,jdbcType=INTEGER}
@@ -292,5 +333,12 @@
                  AND update_time = #{updateTime,jdbcType=TIMESTAMP}
             </if>
         </where>
+    </select>
+
+    <!--验证该站点下手机号是否注册-->
+    <select id="checkTel" resultType="int">
+        select
+        count(1)
+        from t_user where tel = #{tel,jdbcType=VARCHAR} AND site_code = #{siteCode,jdbcType=VARCHAR}
     </select>
 </mapper>

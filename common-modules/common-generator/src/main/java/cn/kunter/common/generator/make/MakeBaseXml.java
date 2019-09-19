@@ -471,7 +471,7 @@ public class MakeBaseXml {
         OutputUtilities.newLine(builder);
         OutputUtilities.javaIndent(builder, 1);
         builder.append("<select id=\"").append("queryConditionsToList")
-                .append("\" parameterType=\""+type+"\" resultType=\""+type+"\">");
+                .append("\" parameterType=\""+type+"\" resultMap=\"BaseResultMap\">");
         OutputUtilities.newLine(builder);
         OutputUtilities.javaIndent(builder, 2);
         builder.append("select");

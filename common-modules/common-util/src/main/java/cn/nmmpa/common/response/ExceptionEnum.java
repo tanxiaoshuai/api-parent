@@ -22,7 +22,11 @@ public enum ExceptionEnum {
 
     ACCOUNT_OR_PWD_ERROR(403, "账户或密码错误"),
 
-    HYSTRIX(204 , "网络连接失败，请重试!")
+    HYSTRIX(204 , "网络连接失败，请重试!"),
+
+    TEL_EXISTENCE(205 , "手机号已存在"),
+
+    USER_DISENABLE(206 , "用户被禁用")
     ;
     int code;
     String message;
